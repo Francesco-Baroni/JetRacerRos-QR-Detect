@@ -1,2 +1,2 @@
 # JetRacerRos-QR-Detect
-The qr_node_zbar c++ implementation for ROS is provided.
+The **qr_node_zbar** c++ implementation for ROS is provided.
