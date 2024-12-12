@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Arguments -->
+  <arg name="cam_name" default="csi_cam_0" />
+  <arg name="topic_name" default="qr_detector" />
+  <arg name="qr_dim" default="0.1" />
+
+  <!-- Node definition -->
+  <node pkg="jetracer" type="qr_node_zbar" name="qr_node_zbar" output="screen">
+    <param name="camera_name" value="$(arg cam_name)" />
+    <param name="topic_name" value="$(arg topic_name)" />
+    <param name="qr_dim" value="$(arg qr_dim)" />
+  </node>
+</launch>
