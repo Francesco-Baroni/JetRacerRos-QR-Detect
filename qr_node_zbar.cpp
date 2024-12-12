@@ -125,8 +125,6 @@ private:
                         {
                             distance_laser = distance_lim;
                         }
-                        ROS_INFO("x, y, angle, distance (laser): %.2f, %.2f, %.2f, %.2f", x, y, fmod((2*PI-angle),(2*PI))*(180/PI), distance_laser);
-                        ROS_INFO("0: %.2f\t90%.2f\t180:%.2f\t270:%.2f", scan_data_->ranges[0], scan_data_->ranges[(PI*0.5)/scan_data_->angle_increment], scan_data_->ranges[PI/scan_data_->angle_increment], scan_data_->ranges[(PI*1.5)/scan_data_->angle_increment]);
                         distance = distance_laser;
                     }
 
@@ -145,9 +143,6 @@ private:
                         if (detected_.find(retval) == detected_.end()) // New QR code detected
                         {
                             ROS_INFO("QR code detected: %s", retval.c_str());
-                            ROS_INFO("  Position (camera): (%.2f, %.2f, %.2f)", x, y, distance);
-                            ROS_INFO("  Position (laser): (%.2f, %.2f, %.2f)", point.point.x, point.point.y, point.point.z);
-                            ROS_INFO("  Position (map): (%.2f, %.2f, %.2f)", transformed_point.point.x, transformed_point.point.y, transformed_point.point.z);
                             // Create marker for text
                             visualization_msgs::Marker marker_txt;
                             marker_txt.header.frame_id = "/map";
