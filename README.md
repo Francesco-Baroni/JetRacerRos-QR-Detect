@@ -9,3 +9,20 @@ Parameters:
 - **cam_name**: The name of the camera topic (default="csi_cam_0").
 - **topic_name**: The name used for the topic (default="qr_detector").
 - **qr_dim**: the actual size of one side of the QR code in meters (default="0.1").
+
+To launch the node:
+```
+roslaunch jetracer qr_node_zbar.launch
+```
+
+Note: Add this to the *CMakeLists.txt* of the **jetracer** package:
+```
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(ZBAR REQUIRED zbar)
+add_executable(qr_node_zbar src/qr_node_zbar.cpp)
+target_link_libraries(qr_node_zbar
+    ${catkin_LIBRARIES}
+    ${OpenCV_LIBRARIES}
+    ${ZBAR_LIBRARIES}
+)
+```
